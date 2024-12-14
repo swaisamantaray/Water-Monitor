@@ -1,9 +1,7 @@
-// JavaScript for dynamic updates
-
 document.addEventListener('DOMContentLoaded', () => {
     const API_BASE_URL = 'http://127.0.0.1:5000/api';
 
-    // Fetch current water level from the backend
+    // Fetch current water level
     async function fetchWaterLevel() {
         try {
             const response = await fetch(`${API_BASE_URL}/water-level`);
@@ -14,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Fetch usage trends from the backend
+    // Fetch usage trends
     async function fetchUsageTrends() {
         try {
             const response = await fetch(`${API_BASE_URL}/usage-trends`);
@@ -25,16 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Function to update the water level visualization
+    // Update water level visualization
     function updateWaterLevel(level) {
         const waterFill = document.getElementById('water-fill');
         const levelStatus = document.getElementById('level-status');
 
-        // Update height of water fill and status text
         waterFill.style.height = `${level}%`;
         levelStatus.textContent = `Tank is ${level}% full`;
 
-        // Check for alert thresholds
         const alertMessage = document.getElementById('alert-message');
         if (level < 20) {
             alertMessage.textContent = 'Water is below 20%! Refill needed.';
@@ -47,13 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Function to update the usage trends chart
+    // Update usage trends chart
     function updateUsageChart(trends) {
         usageChart.data.datasets[0].data = trends;
         usageChart.update();
     }
 
-    // Initialize Chart.js for usage trends
+    // Chart.js initialization
     const ctx = document.getElementById('usage-chart').getContext('2d');
     const usageChart = new Chart(ctx, {
         type: 'line',
@@ -61,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             labels: ['Day 8', 'Day 9', 'Day 10', 'Day 11', 'Day 12'],
             datasets: [{
                 label: 'Predicted Daily Water Consumption (Liters)',
-                data: [], // Empty initially, updated dynamically
+                data: [],
                 borderColor: '#0078d4',
                 backgroundColor: 'rgba(0, 120, 212, 0.2)',
                 fill: true,
@@ -77,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    // Periodically fetch data
-    setInterval(fetchWaterLevel, 5000); // Fetch water level every 5 seconds
-    fetchWaterLevel(); // Initial fetch
-    fetchUsageTrends(); // Fetch usage trends on load
+    // Fetch data periodically
+    setInterval(fetchWaterLevel, 5000);
+    fetchWaterLevel();
+    fetchUsageTrends();
 });

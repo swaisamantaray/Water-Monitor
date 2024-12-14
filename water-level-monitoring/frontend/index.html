@@ -6,36 +6,40 @@
     <title>Water Level Monitoring Dashboard</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
-        <h1>Water Level Monitoring</h1>
+        <h1>Water Level Monitoring Dashboard</h1>
     </header>
     <main>
+        <!-- Current Water Level Section -->
         <section id="current-level">
             <h2>Current Water Level</h2>
             <div id="tank-visual">
-                <img src="tank.png" alt="Water Tank" style="width: 200px;">
-                <div id="water-fill" style="height: 70%; background-color: #4caf50;"></div>
+                <img src="assets/tank.png" alt="Water Tank" class="tank-img">
+                <div id="water-fill"></div>
             </div>
             <p id="level-status">Tank is 70% full</p>
         </section>
 
+        <!-- Usage Trends Section -->
         <section id="predictions">
-            <h2>Usage Trends</h2>
+            <h2>Predicted Usage Trends</h2>
             <canvas id="usage-chart" width="600" height="400"></canvas>
         </section>
 
+        <!-- Alerts Section -->
         <section id="alerts">
             <h2>Alerts</h2>
-            <p id="alert-message">Water is below 20%!</p>
+            <p id="alert-message">All systems normal.</p>
         </section>
 
+        <!-- Guidance Section -->
         <section id="guidance">
-            <h2>Guidance</h2>
-            <p id="guidance-message">Optimize your water usage to last longer.</p>
+            <h2>Water Usage Guidance</h2>
+            <p id="guidance-message">Optimize your water usage to save resources.</p>
         </section>
     </main>
-    <script src="script.js"></script>
 </body>
 </html>
