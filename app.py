@@ -50,5 +50,26 @@ def update_water_level():
         return jsonify({"status": "success", "message": "Water level updated"})
     return jsonify({"status": "error", "message": "Invalid data"}), 400
 
+from flask import Flask, jsonify
+import random
+
+app = Flask(__name__)
+
+# Example endpoint to return random water level data
+@app.route('/api/water-level', methods=['GET'])
+def water_level():
+    water_data = {
+        "water_level": random.randint(10, 100)  # Random water level for demonstration
+    }
+    return jsonify(water_data)
+
+# Example endpoint for predictions
+@app.route('/api/usage-trends', methods=['GET'])
+def usage_trends():
+    trends = [random.randint(100, 300) for _ in range(5)]  # Example future trends
+    return jsonify({"future_trends": trends})
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)

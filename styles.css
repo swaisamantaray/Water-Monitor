@@ -41,7 +41,7 @@ h2 {
 #tank-visual {
     position: relative;
     width: 200px;
-    height: 400px;
+    height: 200px;
     border: 2px solid #0078d4;
     border-radius: 10px;
     overflow: hidden;
